@@ -72,11 +72,47 @@ Export the .zip file with the libs
 ```
 pushd $VIRTUAL_ENV/lib/python3.6/site-packages/
 
-bash-4.2# zip -r -9 -q /var/task/venv.zip *
+zip -r -9 -q /var/task/venv.zip *
 ```
+
+## Build image
+
+1. From the terminal, go to the ```lambci_python_36_fbprophet```
+
+2. Run: 
+
+```
+docker build --tag lambci_python_36_fbprophet .
+```
+
+You should have the image ```lambci_python_36_fbprophet```
+
+## Get the ```venv.zip``` file (where are the libraries that you will use in your lambda)
+
+1. On the terminal, navegate until the folder that you would like to have the .zip and run:
+
+```
+ocker run --rm -it -v "$PWD":/var/task lambci_python_36_fbprophet bash
+```
+
+2. Now, that you are inside of the container, run:
+
+```
+cd $VIRTUAL_ENV/lib/python3.6/site-packages/
+
+zip -r -9 -q /var/task/venv.zip *
+
+```
+
+You should be able to see the ```venv.zip``` into your local folder
+
 
 ## References
 
 https://towardsdatascience.com/how-to-get-fbprophet-work-on-aws-lambda-c3a33a081aaf
 
 https://github.com/facebook/prophet/issues/1057
+
+https://pythonspeed.com/articles/activate-virtualenv-dockerfile/
+
+https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html
