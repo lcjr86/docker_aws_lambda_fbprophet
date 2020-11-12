@@ -92,7 +92,7 @@ You should have the image ```lambci_python_36_fbprophet```
 1. On the terminal, navegate until the folder that you would like to have the .zip and run:
 
 ```
-ocker run --rm -it -v "$PWD":/var/task lambci_python_36_fbprophet bash
+docker run --rm -it -v "$PWD":/var/task lambci_python_36_fbprophet bash
 ```
 
 2. Now, that you are inside of the container, run:
@@ -101,7 +101,6 @@ ocker run --rm -it -v "$PWD":/var/task lambci_python_36_fbprophet bash
 cd $VIRTUAL_ENV/lib/python3.6/site-packages/
 
 zip -r -9 -q /var/task/venv.zip *
-
 ```
 
 You should be able to see the ```venv.zip``` into your local folder
